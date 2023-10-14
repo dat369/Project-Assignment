@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+}
+.header{
+    height: 150px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.header img{
+    height: 100%;
+}
+.header h1{
+    margin: 0;
+}
+.nav-bar{
+    border-top: 5px  solid #ef9c00;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    background-color: greenyellow;
+    justify-content: space-between;
+}
+.nav-bar ul{
+    display: inline-flex;
+}
+.nav-bar ul .option{
+    display: inline;
+    padding: 15px;
+}
+.nav-bar ul .option a{
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+}
+.nav-bar ul .user{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-right: 100px;
+}
+.nav-bar ul .user img{
+    height: 45px;
+    width: 45px;
+    margin: 0;
+    margin-right: 10px;
+    padding-top: 1px;
+    padding-left: 15px;
+}
+.nav-bar ul .user a{
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+    padding-right: 15px;
+}
+.nav-bar ul li:hover{
+    background-color: rgb(105, 148, 39);
+    cursor: pointer;
+}
+.nav-bar .user .Multi-level {
+    width: 200px;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    margin-top: 25px;
+    padding-left: 0;
+    right: 50px;
+}
+
+.nav-bar .user:hover .Multi-level {
+    display: grid;
+}
+
+.nav-bar .Multi-level .option {
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.nav-bar .Multi-level .option a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-bar .Multi-level .option a:hover {
+    color: #007bff;
+}
+.container{
+    margin-top: 5px;
+    display: flex;
+    height: 800px;
+    width: 100%;
+}
+.sub-nav-bar {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    width: 14%;
+    height: 100%;
+    border: 5px solid green;
+    padding: 0 10px;
+}
+
+.sub-nav-bar a {
+    background-color: #27ae60;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-size: 18px;
+}
+
+.sub-nav-bar a:hover {
+    background-color: #1e8449;
+}
+
+
+
+.container .content{
+    border: 5px solid green;
+    width: 85%;
+    height: 100%;
+    overflow-y: auto;
+}
+th {
+    background-color: lightgreen;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.view-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+footer{
+    height: 150px;
+    background-color: greenyellow;
+    width: 100%;
+}
+.footer-item{
+    margin-top: 15px;
+    text-align: center;
+    line-height: 30px;
+    padding-top: 25px;
+}
