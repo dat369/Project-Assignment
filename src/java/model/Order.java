@@ -11,19 +11,19 @@ import java.util.Date;
  * @author ACER
  */
 public class Order {
-    String orderID;
-    String cusID;
-    String orderName;
-    String orderPhone;
-    String senderAddress;
-    String orderAddress;
-    Date dateOfDelivery;
-    String orderType;
-    String orderHeight;
-    String orderPaid;
-    String orderTransaction;
-    String orderStatus;
-    String shipID;
+    private String orderID;
+    private String cusID;
+    private String orderName;
+    private String orderPhone;
+    private String senderAddress;
+    private String orderAddress;
+    private Date dateOfDelivery;
+    private String orderType;
+    private String orderHeight;
+    private String orderPaid;
+    private String orderTransaction;
+    private String orderStatus;
+    private String shipID;
 
     public Order(String orderID, String cusID, String orderName, String orderPhone,String senderAddress, String orderAddress, Date dateOfDelivery, String orderType, String orderHeight, String orderPaid, String orderTransaction, String orderStatus, String shipID) {
         this.orderID = orderID;
@@ -143,6 +143,11 @@ public class Order {
 
     public void setShipID(String shipID) {
         this.shipID = shipID;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" + "orderID=" + orderID + ", cusID=" + cusID + ", orderName=" + orderName + ", orderPhone=" + orderPhone + ", senderAddress=" + senderAddress + ", orderAddress=" + orderAddress + ", dateOfDelivery=" + dateOfDelivery + ", orderType=" + orderType + ", orderHeight=" + orderHeight + ", orderPaid=" + orderPaid + ", orderTransaction=" + orderTransaction + ", orderStatus=" + orderStatus + ", shipID=" + shipID + '}';
     }
     
 }

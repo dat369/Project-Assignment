@@ -11,20 +11,22 @@ import java.util.Date;
  * @author ACER
  */
 public class Customer {
-    String cid;
-    String cusName;
-    String cusPhone;
-    Date dob;
-    String cusAddress;
-    String pwd;
+    private String cid;
+    private String cusName;
+    private String cusPhone;
+    private Date dob;
+    private String cusAddress;
+    private String pwd;
+    private String email;
 
-    public Customer(String cid, String cusName, String cusPhone, Date dob, String cusAddress, String pwd) {
+    public Customer(String cid, String cusName, String cusPhone, Date dob, String cusAddress, String pwd,String email) {
         this.cid = cid;
         this.cusName = cusName;
         this.cusPhone = cusPhone;
         this.dob = dob;
         this.cusAddress = cusAddress;
         this.pwd = pwd;
+        this.email=email;
     }
 
     public String getCid() {
@@ -73,6 +75,14 @@ public class Customer {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
 }

@@ -9,6 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import model.DAO;
 import model.Order;
@@ -21,22 +22,23 @@ import model.Shipper;
 public class ShowOrder extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         DAO dao= new DAO();
         ArrayList<Order> orderList= dao.getOrder();
-        Shipper shipper = (Shipper) request.getSession().getAttribute("shipper");
+        HttpSession session= request.getSession();
+        
+        Shipper shipper = (Shipper) session.getAttribute("shipper");
         String[] shipperAddress = shipper.getAddress().split(",");
-        String shipperCity= shipperAddress[shipperAddress.length-1];
-        for(Order order: orderList){
-            String[]orderCity= order.getSenderAddress().split(","); 
-            if(!shipperCity.equals(orderCity[orderCity.length-1])){
-                orderList.remove(order);
+        String shipperCity= shipperAddress[shipperAddress.length-1].trim();
+        
+        for(int i=0; i<orderList.size();i++){
+            String[]orderCity= orderList.get(i).getSenderAddress().split(","); 
+            if(!shipperCity.equals(orderCity[orderCity.length-1].trim())){
+                orderList.remove(orderList.get(i));
             }      
         }
-        if(!orderList.isEmpty()){
-            request.setAttribute("OrderList", orderList);
-            request.getRequestDispatcher("showOrder.jsp").forward(request, response);
-        }
+        
+        request.setAttribute("OrderList", orderList);
+        request.getRequestDispatcher("showOrder.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

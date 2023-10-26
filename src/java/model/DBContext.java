@@ -23,4 +23,3 @@ public class DBContext {
     private final String userId="sa";
     private final String passWord="sa";
 }
-

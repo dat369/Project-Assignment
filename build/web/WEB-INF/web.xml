@@ -10,7 +10,35 @@
     </servlet>
     <servlet>
         <servlet-name>LoginShipper</servlet-name>
-        <servlet-class>control.LoginShipper</servlet-class>
+        <servlet-class>control.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>control.logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Update</servlet-name>
+        <servlet-class>control.Update</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Signup</servlet-name>
+        <servlet-class>control.Signup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginCus</servlet-name>
+        <servlet-class>control.LoginCus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginShip</servlet-name>
+        <servlet-class>control.LoginShip</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetCookie</servlet-name>
+        <servlet-class>control.GetCookie</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Getcookie</servlet-name>
+        <servlet-class>control.Getcookie</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CalculateDistanceServlet</servlet-name>
@@ -23,6 +51,30 @@
     <servlet-mapping>
         <servlet-name>LoginShipper</servlet-name>
         <url-pattern>/loginshipper</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Update</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Signup</servlet-name>
+        <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginCus</servlet-name>
+        <url-pattern>/logincus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginShip</servlet-name>
+        <url-pattern>/loginship</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Getcookie</servlet-name>
+        <url-pattern>/getcookie</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
