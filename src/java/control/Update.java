@@ -35,7 +35,7 @@ public class Update extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session= request.getSession();
         Shipper shipper= (Shipper) session.getAttribute("shipper");
-        
+
         String name = request.getParameter("name");
         shipper.setName(name);
         String phone = request.getParameter("phone");
@@ -50,9 +50,10 @@ public class Update extends HttpServlet {
         String licensePlates = request.getParameter("licensePlates");
         shipper.setLicensePlates(licensePlates);
         session.setAttribute("shipper", shipper);
+        
         DAO dao= new DAO();
         dao.updateInfor(shipper.getId(), name, phone, dob, specificAddress+", "+city, cccd, licensePlates);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("ShowOrderOfShipper.jsp").forward(request, response);
     }
     /**
      * Handles the HTTP <code>POST</code> method.

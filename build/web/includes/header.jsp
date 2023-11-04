@@ -4,15 +4,13 @@
 <% request.getSession().getAttribute("customer");%>
 <% request.getAttribute("CustomerLoginFailed");%>
 <% request.getAttribute("ShipperLoginFailed");%>
-
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="shortcut icon" href="img/logo.png">
         <title>Deliver - Free Courier Website Template</title>
 
         <style><%@include file="/styles/vendor.css" %>%></style>
@@ -35,6 +33,7 @@
     </head>
 
     <body data-bs-spy="scroll" data-bs-target="#navbar-example2" tabindex="0">
+
 
         <!-- Navigation Section Starts -->
         <section id="navigation-bar" class="navigation position-fixed">
@@ -88,6 +87,7 @@
                                         <h5> Contact </h5>
                                     </a>
                                 </li>
+
                                 <li class="nav-list mx-3 dropdown text-center">
                                     <a class="nav-link px-2 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                                        aria-expanded="false">
@@ -110,10 +110,10 @@
                                                     <a href="ShowInforShip.jsp" class="dropdown-item text-uppercase">Information</a>
                                                 </li>
                                                 <li>
-                                                    <a href="Updateshipper.jsp" class="dropdown-item text-uppercase">Update</a>
+                                                    <a href="UpdateShipper.jsp" class="dropdown-item text-uppercase">Update</a>
                                                 </li>
                                                 <li>
-                                                    <a href="Changepwd.jsp" class="dropdown-item text-uppercase">Change Pass</a>
+                                                    <a href="ChangePass.jsp" class="dropdown-item text-uppercase">Change Pass</a>
                                                 </li>
                                                 <li>
                                                     <a href="/ProjectAssignment/logout" class="dropdown-item text-uppercase">Log out</a>
@@ -137,7 +137,7 @@
                                                     <a href="UpdateCustomer.jsp" class="dropdown-item text-uppercase">Update</a>
                                                 </li>
                                                 <li>
-                                                    <a href="Changepwd.jsp" class="dropdown-item text-uppercase">Change Pass</a>
+                                                    <a href="ChangePass.jsp" class="dropdown-item text-uppercase">Change Pass</a>
                                                 </li>
                                                 <li>
                                                     <a href="/ProjectAssignment/logout" class="dropdown-item text-uppercase">Log out</a>
@@ -186,24 +186,28 @@
                                                             <div class="tab-content" id="nav-tabContent">
                                                                 <div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel"
                                                                      aria-labelledby="nav-sign-in-tab">
-                                                                    <form action="/ProjectAssignment/logincus" id="form1" class="form-group flex-wrap p-3 " method="POST">
+
+                                                                    <form action="/ProjectAssignment/login" id="form1" class="form-group flex-wrap p-3 " method="POST">
                                                                         <div class="form-input col-lg-12 my-4">
                                                                             <label for="exampleInputEmail1"
                                                                                    class="form-label fs-6 text-uppercase fw-bold text-black">Email
                                                                                 Address</label>
                                                                             <input type="text" id="email" name="email" placeholder="Email"
-                                                                                   class="form-control ps-3" value="${email}">
+                                                                                   class="form-control ps-3">
+
                                                                         </div>
                                                                         <div class="form-input col-lg-12 my-4">
                                                                             <label for="inputPassword1"
                                                                                    class="form-label  fs-6 text-uppercase fw-bold text-black">Password</label>
                                                                             <input type="password" id="password" name="password" placeholder="Password"
-                                                                                   class="form-control ps-3" aria-describedby="passwordHelpBlock" value="${pass}">
+                                                                                   class="form-control ps-3" aria-describedby="passwordHelpBlock">
+
                                                                             <div id="passwordHelpBlock" class="form-text text-center">
                                                                                 <a href="#" class=" password">Forgot Password ?</a>
                                                                             </div>
-                                                                            
+
                                                                         </div>
+                                                                        <input type="hidden" id="Login" name="Login" value="customer">
                                                                         <label class="py-3">
                                                                             <input id="rememberMe" name="rememberMe" type="checkbox" class="d-inline">
                                                                             <span class="label-body text-black">Remember Me</span>
@@ -217,24 +221,27 @@
                                                                 </div>
                                                                 <div class="tab-pane fade" id="nav-register" role="tabpanel"
                                                                      aria-labelledby="nav-register-tab">
-                                                                    <form action="/ProjectAssignment/loginship" id="form1" class="form-group flex-wrap p-3 " method="POST">
+                                                                    <form action="/ProjectAssignment/login" id="form1" class="form-group flex-wrap p-3 " method="POST">
                                                                         <div class="form-input col-lg-12 my-4">
                                                                             <label for="exampleInputEmail1"
                                                                                    class="form-label fs-6 text-uppercase fw-bold text-black">Email
                                                                                 Address</label>
+
                                                                             <input type="text" id="email" name="email" placeholder="Email"
-                                                                                   class="form-control ps-3" value="${email}">
+                                                                                   class="form-control ps-3">
                                                                         </div>
                                                                         <div class="form-input col-lg-12 my-4">
                                                                             <label for="inputPassword1"
                                                                                    class="form-label  fs-6 text-uppercase fw-bold text-black">Password</label>
+
                                                                             <input type="password" id="password" name="password" placeholder="Password"
-                                                                                   class="form-control ps-3" aria-describedby="passwordHelpBlock" value="${pass}">
+                                                                                   class="form-control ps-3" aria-describedby="passwordHelpBlock">
                                                                             <div id="passwordHelpBlock" class="form-text text-center">
                                                                                 <a href="#" class=" password">Forgot Password ?</a>
                                                                             </div>
 
                                                                         </div>
+                                                                        <input type="hidden" id="Login" name="Login" value="shipper">
                                                                         <label class="py-3">
                                                                             <input id="rememberMe" name="rememberMe" type="checkbox" class="d-inline">
                                                                             <span class="label-body text-black">Remember Me</span>

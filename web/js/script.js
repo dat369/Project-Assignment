@@ -1,8 +1,8 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     var viewButtons = document.querySelectorAll(".view-button");
-    
-    viewButtons.forEach(function(button, index) {
-        button.addEventListener("click", function() {
+
+    viewButtons.forEach(function (button, index) {
+        button.addEventListener("click", function () {
             var detailBox = document.querySelectorAll(".detail-box")[index];
             if (detailBox.style.display === "none" || detailBox.style.display === "") {
                 detailBox.style.display = "block";
@@ -13,119 +13,146 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-(function($) {
+(function ($) {
 
-  "use strict";
+    "use strict";
 
     // init Chocolat light box
-    var initChocolat = function() {
-      Chocolat(document.querySelectorAll('.image-link'), {
-        imageSize: 'contain',
-        loop: true,
-      })
+    var initChocolat = function () {
+        Chocolat(document.querySelectorAll('.image-link'), {
+            imageSize: 'contain',
+            loop: true,
+        })
     }
 
- 
 
-  $(document).ready(function () {
 
-    var swiper = new Swiper(".client-Swiper", {
+    $(document).ready(function () {
 
-      pagination: {
-        el: ".swiper-pagination",
-      },
-    
-      breakpoints: {
+        var swiper = new Swiper(".client-Swiper", {
 
-          0:{
-            slidesPerView: 1,
-          },
+            pagination: {
+                el: ".swiper-pagination",
+            },
 
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 25,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 25,
-          },
-        }
-      }); 
+            breakpoints: {
 
-      window.addEventListener("load", (event) => {
-        //isotope
-        $('.isotope-container').isotope({
-          // options
-          itemSelector: '.item',
-          layoutMode: 'masonry',
+                0: {
+                    slidesPerView: 1,
+                },
+
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 25,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 25,
+                },
+            }
         });
-  
-  
-  
-        // Initialize Isotope
-        var $container = $('.isotope-container').isotope({
-          // options
-          itemSelector: '.item',
-          layoutMode: 'masonry',
-        });
-  
-        $(document).ready(function () {
-          //active button
-          $('.filter-button').click(function () {
-            $('.filter-button').removeClass('active');
-            $(this).addClass('active');
-          });
-        });
-  
-        // Filter items on button click
-        $('.filter-button').click(function () {
-          var filterValue = $(this).attr('data-filter');
-          if (filterValue === '*') {
-            // Show all items
-            $container.isotope({ filter: '*' });
-          } else {
-            // Show filtered items
-            $container.isotope({ filter: filterValue });
-          }
-        });
-  
-      });
+
+        window.addEventListener("load", (event) => {
+            //isotope
+            $('.isotope-container').isotope({
+                // options
+                itemSelector: '.item',
+                layoutMode: 'masonry',
+            });
 
 
-      initChocolat();
 
-   
-  });
+            // Initialize Isotope
+            var $container = $('.isotope-container').isotope({
+                // options
+                itemSelector: '.item',
+                layoutMode: 'masonry',
+            });
+
+            $(document).ready(function () {
+                //active button
+                $('.filter-button').click(function () {
+                    $('.filter-button').removeClass('active');
+                    $(this).addClass('active');
+                });
+            });
+
+            // Filter items on button click
+            $('.filter-button').click(function () {
+                var filterValue = $(this).attr('data-filter');
+                if (filterValue === '*') {
+                    // Show all items
+                    $container.isotope({filter: '*'});
+                } else {
+                    // Show filtered items
+                    $container.isotope({filter: filterValue});
+                }
+            });
+
+        });
+
+
+        initChocolat();
+
+
+    });
 
 
 })(jQuery);
 document.addEventListener('DOMContentLoaded', function () {
-        var customerLoginButton = document.getElementById('customerLoginFailed');
-        var shipperLoginButton = document.getElementById('shipperLoginFailed');
-        var modal = new bootstrap.Modal(document.getElementById('exampleModal'));
-        
-        var customerLoginTab = document.getElementById('nav-sign-in-tab');
-        var shipperLoginTab = document.getElementById('nav-register-tab');
+    var customerLoginButton = document.getElementById('customerLoginFailed');
+    var shipperLoginButton = document.getElementById('shipperLoginFailed');
+    var modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+    var customerLoginTab = document.getElementById('nav-sign-in-tab');
+    var shipperLoginTab = document.getElementById('nav-register-tab');
+    // Nếu có lỗi khi đăng nhập cho customer, tự động chọn tùy chọn customer khi mở modal
+    if (customerLoginButton !== null) {
+        modal.show();
+        customerLoginButton.classList.add('active');
+        customerLoginTab.classList.add('active');
+        shipperLoginTab.classList.remove('active');
+        document.getElementById('nav-sign-in').classList.add('active', 'show');
+        document.getElementById('nav-register').classList.remove('active', 'show');
+    }
 
-        // Nếu có lỗi khi đăng nhập cho customer, tự động chọn tùy chọn customer khi mở modal
-        if (customerLoginButton !== null) {
-            modal.show();
-            customerLoginButton.classList.add('active');
-            
-            customerLoginTab.classList.add('active');
-            shipperLoginTab.classList.remove('active');
-            document.getElementById('nav-sign-in').classList.add('active', 'show');
-            document.getElementById('nav-register').classList.remove('active', 'show');
-        }
+// Nếu có lỗi khi đăng nhập cho shipper, tự động chọn tùy chọn shipper khi mở modal
+    else if (shipperLoginButton !== null) {
+        modal.show();
+        shipperLoginButton.classList.add('active');
+        shipperLoginTab.classList.add('active');
+        customerLoginTab.classList.remove('active');
+        document.getElementById('nav-register').classList.add('active', 'show');
+        document.getElementById('nav-sign-in').classList.remove('active', 'show');
+    }
+});
+function hienThiCuaSo() {
+    var modal = document.getElementById("myModal");
+    var thongBao = document.getElementById("thongBao");
+    // Hiển thị cửa sổ modal
+    if(thongBao!==null) modal.style.display = "block";
 
-        // Nếu có lỗi khi đăng nhập cho shipper, tự động chọn tùy chọn shipper khi mở modal
-        else if (shipperLoginButton !== null) {
-            modal.show();
-            shipperLoginButton.classList.add('active');
-            
-            shipperLoginTab.classList.add('active');
-            customerLoginTab.classList.remove('active');
-            document.getElementById('nav-register').classList.add('active', 'show');
-            document.getElementById('nav-sign-in').classList.remove('active', 'show');
+    // Xử lý khi người dùng nhấn nút đóng cửa sổ modal
+    var closeButton = document.querySelector(".close");
+    closeButton.onclick = function() {
+        dongCuaSo();
+
+        // Tải lại trang web khi người dùng đóng cửa sổ modal
+        window.location.reload();
+    };
+
+    // Xử lý khi người dùng nhấn nút ESC
+    window.onkeydown = function(event) {
+        if (event.key === "Escape" && modal.style.display === "block") {
+            dongCuaSo();
+
+            // Tải lại trang web khi người dùng đóng cửa sổ modal bằng nút ESC
+            window.location.reload();
         }
-    });
+    };
+}
+
+function dongCuaSo() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+}
+

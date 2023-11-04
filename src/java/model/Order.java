@@ -4,48 +4,55 @@
  */
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
  * @author ACER
  */
 public class Order {
-    private String orderID;
+
+    private int orderID;
     private String cusID;
     private String orderName;
     private String orderPhone;
     private String senderAddress;
     private String orderAddress;
     private Date dateOfDelivery;
-    private String orderType;
-    private String orderHeight;
-    private String orderPaid;
-    private String orderTransaction;
+    private char orderType;
+    private float orderVolume;
+    private float orderWeight;
+    private char orderDeliveryType;
+    private float orderTransaction;
     private String orderStatus;
     private String shipID;
+    private String note;
+    public Order() {
+    }
 
-    public Order(String orderID, String cusID, String orderName, String orderPhone,String senderAddress, String orderAddress, Date dateOfDelivery, String orderType, String orderHeight, String orderPaid, String orderTransaction, String orderStatus, String shipID) {
+    public Order(int orderID, String cusID, String orderName, String orderPhone, String senderAddress, String orderAddress, Date dateOfDelivery, char orderType, float orderVolume, float orderWeight, char orderDeliveryType, float orderTransaction, String orderStatus, String shipID,String note) {
         this.orderID = orderID;
         this.cusID = cusID;
         this.orderName = orderName;
         this.orderPhone = orderPhone;
-        this.senderAddress= senderAddress;
+        this.senderAddress = senderAddress;
         this.orderAddress = orderAddress;
         this.dateOfDelivery = dateOfDelivery;
         this.orderType = orderType;
-        this.orderHeight = orderHeight;
-        this.orderPaid = orderPaid;
+        this.orderVolume = orderVolume;
+        this.orderWeight = orderWeight;
+        this.orderDeliveryType = orderDeliveryType;
         this.orderTransaction = orderTransaction;
         this.orderStatus = orderStatus;
         this.shipID = shipID;
+        this.note= note;
     }
 
-    public String getOrderID() {
+    public int getOrderID() {
         return orderID;
     }
 
-    public void setOrderID(String orderID) {
+    public void setOrderID(int orderID) {
         this.orderID = orderID;
     }
 
@@ -98,34 +105,58 @@ public class Order {
     }
 
     public String getOrderType() {
-        return orderType;
+        switch (orderType) {
+            case 'F':
+                return "Fragile";
+            case 'B':
+                return "Big size";
+            case 'C':
+                return "Casual";
+            default:
+                return "Unknown";
+        }
+
     }
 
-    public void setOrderType(String orderType) {
+    public void setOrderType(Character orderType) {
         this.orderType = orderType;
     }
 
-    public String getOrderHeight() {
-        return orderHeight;
+    public float getOrderVolume() {
+        return orderVolume;
     }
 
-    public void setOrderHeight(String orderHeight) {
-        this.orderHeight = orderHeight;
+    public void setOrderVolume(float orderVolume) {
+        this.orderVolume = orderVolume;
     }
 
-    public String getOrderPaid() {
-        return orderPaid;
+    public float getOrderWeight() {
+        return orderWeight;
     }
 
-    public void setOrderPaid(String orderPaid) {
-        this.orderPaid = orderPaid;
+    public void setOrderWeight(float orderWeight) {
+        this.orderWeight = orderWeight;
     }
 
-    public String getOrderTransaction() {
+    public String getOrderDeliveryType() {
+        switch (orderDeliveryType) {
+            case 'N':
+                return "Normal";
+            case 'F':
+                return "Fast";
+        }
+        return null;
+    }
+
+    public void setOrderDeliveryType(char orderDeliveryType) {
+        this.orderDeliveryType = orderDeliveryType;
+    }
+
+    public float getOrderTransaction() {
         return orderTransaction;
     }
 
-    public void setOrderTransaction(String orderTransaction) {
+    public void setOrderTransaction(float orderTransaction) {
         this.orderTransaction = orderTransaction;
     }
 
@@ -145,9 +176,13 @@ public class Order {
         this.shipID = shipID;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" + "orderID=" + orderID + ", cusID=" + cusID + ", orderName=" + orderName + ", orderPhone=" + orderPhone + ", senderAddress=" + senderAddress + ", orderAddress=" + orderAddress + ", dateOfDelivery=" + dateOfDelivery + ", orderType=" + orderType + ", orderHeight=" + orderHeight + ", orderPaid=" + orderPaid + ", orderTransaction=" + orderTransaction + ", orderStatus=" + orderStatus + ", shipID=" + shipID + '}';
+    public String getNote() {
+        return note;
     }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+    
     
 }

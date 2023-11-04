@@ -1,27 +1,30 @@
 <%@ include file="/includes/header.jsp" %>
-<%@include file="/includes/Shipper-sub-nav-bar.jsp" %>
 <%@page contentType="text/html" pageEncoding="utf-8" %>
 <section>
-     <h1 class="heading-update">Thông Tin Shipper</h1>
-     <form action="/ProjectAssignment/update" id="userForm" class="form-update">
-            <div class="form-group">
+    <div class="container mt-5 form-container">
+        <h1 class="heading-update">Thông Tin Shipper</h1>
+        <a href="/ProjectAssignment/ordersofship?action=yourlist" class="delete-link" style="position: fixed; top: 100px; right: 80px; font-size: 24px; text-decoration: none;">
+            &#10006; <!-- Đây là Unicode cho biểu tượng "x" -->
+        </a>
+        <form action="/ProjectAssignment/update" id="userForm" class="form-update">
+            <div class="mb-3">
                 <label for="name" class="label">Họ và Tên:</label>
-                <input type="text" id="name" name="name" class="input" value="${shipper.name}" required>
+                <input type="text" class="form-control" id="name" name="name" class="input" value="${shipper.name}" required>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="phone" class="label">Số Điện Thoại:</label>
-                <input type="tel" id="phone" name="phone" class="input" value="${shipper.phone}" required>
+                <input type="tel" class="form-control" id="phone" name="phone" class="input" value="${shipper.phone}" required>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="dob" class="label">Ngày Sinh:</label>
-                <input type="date" id="dob" name="dob" class="input" value="${shipper.dob}" required>
+                <input type="date" class="form-control" id="dob" name="dob" class="input" value="${shipper.dob}" required>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="city" class="label">Thành Phố:</label>
-                <select id="city" name="city" class="input" required>
+                <select id="city" class="form-control" name="city" class="input" required>
                     <option value="">Chọn thành phố</option>
                     <option value="An Giang">An Giang</option>
                     <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
@@ -84,24 +87,23 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="specificAddress" class="label">Địa Chỉ Cụ Thể:</label>
-                <input type="text" id="specificAddress" name="specificAddress" class="input" required>
+                <input type="text" class="form-control" id="specificAddress" name="specificAddress" class="input" required>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="cccd" class="label">CCCD:</label>
-                <input type="text" id="cccd" name="cccd" class="input" value="${shipper.cccd}" required>
+                <input type="text" class="form-control" id="cccd" name="cccd" class="input" value="${shipper.cccd}" required>
             </div>
 
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="licensePlates" class="label">Biển Số Xe:</label>
-                <input type="text" id="licensePlates" name="licensePlates" class="input" value="${shipper.licensePlates}" required>
+                <input type="text" class="form-control" id="licensePlates" name="licensePlates" class="input" value="${shipper.licensePlates}" required>
             </div>
 
-            <button type="submit" class="submit-button">Xác Nhận</button>
+            <button type="submit" class="btn btn-success button-accept">Xác Nhận</button>
         </form>
     </div>
- 
 </section>
 <%@ include file="/includes/footer.jsp" %>

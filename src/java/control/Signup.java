@@ -64,7 +64,7 @@ public class Signup extends HttpServlet {
                     dao.addCustomer(cid, cusName, cusPhone, dob, specificAddress+","+city, pwd, email);
                     Customer customer= new Customer(cid, cusName, cusPhone, dob, specificAddress+","+city, pwd, email);
                     session.setAttribute("customer", customer);
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    request.getRequestDispatcher("ShowinforCus.jsp").forward(request, response);
                 }else{
                     request.setAttribute("MSG", "Pass Word are not Confirm");
                     request.getRequestDispatcher("signup.jsp").forward(request, response);
