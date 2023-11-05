@@ -17,12 +17,24 @@
         <servlet-class>control.ShippingFee</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>RegisterShipper</servlet-name>
+        <servlet-class>control.RegisterShipper</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateInfo</servlet-name>
+        <servlet-class>control.UpdateInfo</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>RatingShipper</servlet-name>
         <servlet-class>control.RatingShipper</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CalculateDistanceServlet</servlet-name>
         <servlet-class>control.CalculateDistanceServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginManager</servlet-name>
+        <servlet-class>control.LoginManager</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>logout</servlet-name>
@@ -79,6 +91,26 @@
     <servlet>
         <servlet-name>sortOrderByDistance</servlet-name>
         <servlet-class>control.sortOrderByDistance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AbortOrder</servlet-name>
+        <servlet-class>control.AbortOrder</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShippingTransaction</servlet-name>
+        <servlet-class>control.ShippingTransaction</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AcceptShipper</servlet-name>
+        <servlet-class>control.AcceptShipper</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WaitingShipperList</servlet-name>
+        <servlet-class>control.WaitingShipperList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaticalEvaluate</servlet-name>
+        <servlet-class>control.StaticalEvaluate</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CalculateDistanceServlet</servlet-name>
@@ -147,6 +179,38 @@
     <servlet-mapping>
         <servlet-name>sortOrderByDistance</servlet-name>
         <url-pattern>/sort</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AbortOrder</servlet-name>
+        <url-pattern>/deleted</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginManager</servlet-name>
+        <url-pattern>/loginmanager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShippingTransaction</servlet-name>
+        <url-pattern>/transaction</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AcceptShipper</servlet-name>
+        <url-pattern>/acceptshipper</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WaitingShipperList</servlet-name>
+        <url-pattern>/listshipper</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaticalEvaluate</servlet-name>
+        <url-pattern>/evaluate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterShipper</servlet-name>
+        <url-pattern>/reg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateInfo</servlet-name>
+        <url-pattern>/updatec</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

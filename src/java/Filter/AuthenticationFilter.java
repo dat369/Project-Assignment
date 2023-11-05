@@ -17,6 +17,8 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Customer;
+import model.Shipper;
 
 /**
  *
@@ -99,13 +101,24 @@ public class AuthenticationFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse rep = (HttpServletResponse) response;
-        HttpSession session = req.getSession(false);
+         if (debug) {
+            log("filter:doFilter()");
+        }
         
-        if (session == null) {
-            rep.sendRedirect("index.jsp");
-        } else {
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+        
+        String url = httpRequest.getServletPath();
+        
+        Customer customer = (Customer)httpRequest.getSession().getAttribute("customer");
+        Shipper shipper = (Shipper)httpRequest.getSession().getAttribute("shipper");
+        //check logined
+        if(httpRequest.getSession().getAttribute("customer") == null || httpRequest.getSession().getAttribute("shipper")  == null && !url.contains("/login") && !url.contains("/signup") && !url.contains(".css")) {
+            httpResponse.sendRedirect("index.jsp");
+        }
+        
+        //check .jsp and .css
+        if((url.contains(".jsp"))) {
             chain.doFilter(request, response);
         }
     }

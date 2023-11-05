@@ -1,3 +1,7 @@
+<%@page contentType="text/html" import="model.*" pageEncoding="utf-8" %>
+<%
+    request.getServletContext().setAttribute("Admin",  new ManagerList());
+%>
 <%@ include file="/includes/header.jsp" %>
   <section id="hero">
     <div class="hero container py-5 my-5">

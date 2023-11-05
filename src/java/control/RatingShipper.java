@@ -56,8 +56,8 @@ public class RatingShipper extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int orderID= Integer.parseInt(request.getParameter("orderID")) ;
-        String orderStarStr = request.getParameter("orderStar");
+        int orderID= Integer.parseInt(request.getParameter("orderID"));
+        String orderStarStr = request.getParameter("star");
         String orderNote = request.getParameter("orderNote");
         int orderStar = Integer.parseInt(orderStarStr);
         DAO dao = new DAO();

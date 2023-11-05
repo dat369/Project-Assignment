@@ -102,9 +102,11 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener('DOMContentLoaded', function () {
     var customerLoginButton = document.getElementById('customerLoginFailed');
     var shipperLoginButton = document.getElementById('shipperLoginFailed');
+    var managerLoginButton = document.getElementById('managerLoginFailed');
     var modal = new bootstrap.Modal(document.getElementById('exampleModal'));
     var customerLoginTab = document.getElementById('nav-sign-in-tab');
     var shipperLoginTab = document.getElementById('nav-register-tab');
+    var managerLoginTab = document.getElementById('nav-manager-tab');
     // Nếu có lỗi khi đăng nhập cho customer, tự động chọn tùy chọn customer khi mở modal
     if (customerLoginButton !== null) {
         modal.show();
@@ -124,16 +126,25 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('nav-register').classList.add('active', 'show');
         document.getElementById('nav-sign-in').classList.remove('active', 'show');
     }
+    else if (managerLoginButton !== null) {
+        modal.show();
+        shipperLoginButton.classList.add('active');
+        shipperLoginTab.classList.add('active');
+        customerLoginTab.classList.remove('active');
+        document.getElementById('nav-manager').classList.add('active', 'show');
+        document.getElementById('nav-sign-in').classList.remove('active', 'show');
+    }
 });
 function hienThiCuaSo() {
     var modal = document.getElementById("myModal");
     var thongBao = document.getElementById("thongBao");
     // Hiển thị cửa sổ modal
-    if(thongBao!==null) modal.style.display = "block";
+    if (thongBao !== null)
+        modal.style.display = "block";
 
     // Xử lý khi người dùng nhấn nút đóng cửa sổ modal
     var closeButton = document.querySelector(".close");
-    closeButton.onclick = function() {
+    closeButton.onclick = function () {
         dongCuaSo();
 
         // Tải lại trang web khi người dùng đóng cửa sổ modal
@@ -141,7 +152,7 @@ function hienThiCuaSo() {
     };
 
     // Xử lý khi người dùng nhấn nút ESC
-    window.onkeydown = function(event) {
+    window.onkeydown = function (event) {
         if (event.key === "Escape" && modal.style.display === "block") {
             dongCuaSo();
 

@@ -42,7 +42,7 @@ public class Choice extends HttpServlet {
         if (choice.equals("accept")) {
             if (dao.raceCondition(orderId)) {
                 dao.acceptOrder(shipper.getId(), orderId);
-                request.getRequestDispatcher("/show").forward(request, response);
+                request.getRequestDispatcher("/ordersofship").forward(request, response);
             }else{
                 request.setAttribute("MSG", "Đơn hàng đã có người nhận.");
                 request.getRequestDispatcher("showOrder.jsp").forward(request, response);

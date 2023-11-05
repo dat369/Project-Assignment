@@ -6,7 +6,7 @@
                 <a class="nav-link item" href="/ProjectAssignment/ordercustomer">Đơn hàng của bạn</a>
                 <a class="nav-link item" href="/ProjectAssignment/history">Lịch sử</a>
                 <a class="nav-link item" href="ordering.jsp">Gửi yêu cầu shipping</a>
-                <a class="nav-link item" href="ten-servlet-tra-cuu-yeu-cau-shipping">Đăng ký làm shipper</a>
+                <a class="nav-link item" href="register.jsp">Đăng ký làm shipper</a>
             </div>
             <div class="content col-md-9">
 

@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Customer;
 import model.DAO;
 import model.Shipper;
 
@@ -55,22 +56,44 @@ public class ChangePass extends HttpServlet {
         DAO dao = new DAO();
         HttpSession session = request.getSession();
         Shipper shipper = (Shipper) session.getAttribute("shipper");
-        String email = request.getParameter("email");
-        String oldPwd = request.getParameter("OldPassword");
-        String newPwd = request.getParameter("NewPass");
-        String confirmPwd = request.getParameter("ConfrimPass");
+        Customer customer = (Customer) session.getAttribute("customer");
 
-        if (newPwd.equals(confirmPwd)) {
-            if (shipper.getEmail().equals(email) && shipper.getPwd().equals(oldPwd)) {
-                dao.changePwd(shipper.getId(), email, newPwd);
-                request.getRequestDispatcher("/ordersofship?action=yourlist").forward(request, response);
+        if (shipper != null) {
+            String email = request.getParameter("email");
+            String oldPwd = request.getParameter("OldPassword");
+            String newPwd = request.getParameter("NewPass");
+            String confirmPwd = request.getParameter("ConfrimPass");
+
+            if (newPwd.equals(confirmPwd)) {
+                if (shipper.getEmail().equals(email) && shipper.getPwd().equals(oldPwd)) {
+                    dao.changePwd(shipper.getId(), email, newPwd);
+                    request.getRequestDispatcher("/ordersofship?action=yourlist").forward(request, response);
+                } else {
+                    request.setAttribute("MSG", "Invalid email or password");
+                    request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
+                }
             } else {
-                request.setAttribute("MSG", "Invalid email or password");
+                request.setAttribute("MSG", "New pass and confirm pass must constain.");
                 request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
             }
-        } else {
-            request.setAttribute("MSG", "New pass and confirm pass must constain.");
-            request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
+        }else{
+            String email = request.getParameter("email");
+            String oldPwd = request.getParameter("OldPassword");
+            String newPwd = request.getParameter("NewPass");
+            String confirmPwd = request.getParameter("ConfrimPass");
+            
+            if (newPwd.equals(confirmPwd)) {
+                if (customer.getEmail().equals(email) && customer.getPwd().equals(oldPwd)) {
+                    dao.changePwd(customer.getCid(), email, newPwd);
+                    request.getRequestDispatcher("/history").forward(request, response);
+                } else {
+                    request.setAttribute("MSG", "Invalid email or password");
+                    request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
+                }
+            } else {
+                request.setAttribute("MSG", "New pass and confirm pass must constain.");
+                request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
+            }
         }
 
     }

@@ -131,10 +131,10 @@
                                             </a>
                                             <ul class="dropdown-menu">
                                                 <li>
-                                                    <a href="ShowInforCus.jsp" class="dropdown-item text-uppercase">Information</a>
+                                                    <a href="ShowinforCus.jsp" class="dropdown-item text-uppercase">Information</a>
                                                 </li>
                                                 <li>
-                                                    <a href="UpdateCustomer.jsp" class="dropdown-item text-uppercase">Update</a>
+                                                    <a href="changeinfo.jsp" class="dropdown-item text-uppercase">Update</a>
                                                 </li>
                                                 <li>
                                                     <a href="ChangePass.jsp" class="dropdown-item text-uppercase">Change Pass</a>
@@ -144,6 +144,13 @@
                                                 </li>
                                             </ul>
                                         </div>
+                                    </div>
+                                </c:when>
+                                <c:when test="${not empty sessionScope.Admin}">
+                                    <div class="account d-flex align-items-center mt-5 mt-lg-0 justify-content-center justify-content-lg-end">
+                                        <a href="/ProjectAssignment/logout" class="nav-link px-2">
+                                            <h5> Logout </h5>
+                                        </a>
                                     </div>
                                 </c:when>
                                 <c:otherwise>
@@ -171,6 +178,10 @@
                                                                             data-bs-toggle="tab" data-bs-target="#nav-register" type="button" role="tab"
                                                                             aria-controls="nav-register" aria-selected="false">Shipper
                                                                     </button>
+                                                                    <button class="btn btn-outline-primary text-uppercase px-4 py-2" id="nav-manager-tab"
+                                                                            data-bs-toggle="tab" data-bs-target="#nav-manager" type="button" role="tab"
+                                                                            aria-controls="nav-manager" aria-selected="false">Manager
+                                                                    </button>
                                                                 </div>
                                                             </nav>
                                                             <%-- Nếu có lỗi khi đăng nhập cho customer --%>
@@ -181,6 +192,9 @@
                                                             <%-- Nếu có lỗi khi đăng nhập cho shipper --%>
                                                             <c:if test="${not empty requestScope.ShipperLoginFailed}">
                                                                 <input type="hidden" id="shipperLoginFailed" value="true">
+                                                            </c:if>
+                                                            <c:if test="${not empty requestScope.ManagerLoginFailed}">
+                                                                <input type="hidden" id="managerLoginFailed" value="true">
                                                             </c:if>
 
                                                             <div class="tab-content" id="nav-tabContent">
@@ -247,6 +261,35 @@
                                                                             <span class="label-body text-black">Remember Me</span>
                                                                         </label>
                                                                         <div class="py-3">${ShipperLoginFailed}</div>
+                                                                        <div class="d-grid my-3">
+                                                                            <button type="submit" class="btn btn-primary btn-lg btn-dark text-uppercase btn-rounded-none fs-6">Log
+                                                                                In</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="tab-pane fade" id="nav-manager" role="tabpanel"
+                                                                     aria-labelledby="nav-manager-tab">
+                                                                    <form action="/ProjectAssignment/loginmanager" id="form1" class="form-group flex-wrap p-3 " method="POST">
+                                                                        <div class="form-input col-lg-12 my-4">
+                                                                            <label for="exampleInputEmail1"
+                                                                                   class="form-label fs-6 text-uppercase fw-bold text-black">Email
+                                                                                Address</label>
+
+                                                                            <input type="text" id="email" name="email" placeholder="Email"
+                                                                                   class="form-control ps-3">
+                                                                        </div>
+                                                                        <div class="form-input col-lg-12 my-4">
+                                                                            <label for="inputPassword1"
+                                                                                   class="form-label  fs-6 text-uppercase fw-bold text-black">Password</label>
+
+                                                                            <input type="password" id="password" name="password" placeholder="Password"
+                                                                                   class="form-control ps-3" aria-describedby="passwordHelpBlock">
+                                                                            <div id="passwordHelpBlock" class="form-text text-center">
+                                                                                <a href="#" class=" password">Forgot Password ?</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <input type="hidden" id="Login" name="Login" value="shipper">
+                                                                        <div class="py-3">${managerLoginFailed}</div>
                                                                         <div class="d-grid my-3">
                                                                             <button type="submit" class="btn btn-primary btn-lg btn-dark text-uppercase btn-rounded-none fs-6">Log
                                                                                 In</button>

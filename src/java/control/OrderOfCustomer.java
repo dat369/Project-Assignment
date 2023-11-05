@@ -28,17 +28,21 @@ public class OrderOfCustomer extends HttpServlet {
             throws ServletException, IOException {
         DAO dao = new DAO();
         HttpSession session = request.getSession();
-        ArrayList<Order> orderList= new ArrayList();
-        Customer customer= (Customer) session.getAttribute("customer");
-        
+        ArrayList<Order> orderList = new ArrayList();
+        Customer customer = (Customer) session.getAttribute("customer");
+
         try {
-            orderList= dao.getAllOrdersByCusId(customer.getCid());
-            request.setAttribute("OrderList", orderList);
-            request.getRequestDispatcher("YourOrder.jsp").forward(request, response);
+            orderList = dao.getAllOrdersByCusId(customer.getCid());
+            if (orderList.isEmpty()) {
+                request.getRequestDispatcher("YourOrder.jsp").forward(request, response);
+            } else {
+                request.setAttribute("OrderList", orderList);
+                request.getRequestDispatcher("YourOrder.jsp").forward(request, response);
+            }
         } catch (Exception ex) {
             Logger.getLogger(OrderOfCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /**
